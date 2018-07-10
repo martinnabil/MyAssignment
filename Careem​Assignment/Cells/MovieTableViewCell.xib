@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="178" id="Xje-jK-qWX" customClass="MovieTableViewCell" customModule="Careem_Assignment" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="538" height="178"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xje-jK-qWX" id="D7y-UV-A0X">
+                <rect key="frame" x="0.0" y="0.0" width="538" height="177.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v0e-Aw-Qqk">
+                        <rect key="frame" x="10" y="5.5" width="518" height="167"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0py-IP-pdc">
+                                <rect key="frame" x="-0.5" y="0.0" width="518" height="167"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iTunesArtwork" translatesAutoresizingMaskIntoConstraints="NO" id="2Iz-kS-uzE">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="fYd-zL-XBT"/>
+                                            <constraint firstAttribute="width" secondItem="2Iz-kS-uzE" secondAttribute="height" multiplier="1:1" id="rRF-yx-AYF"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie​ ​name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHO-wZ-eve">
+                                        <rect key="frame" x="160" y="12" width="353" height="18"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2005-10-18" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHl-bg-J9X">
+                                        <rect key="frame" x="160" y="35" width="47" height="12.5"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="9"/>
+                                        <color key="textColor" red="0.027450980392156862" green="0.027450980392156862" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uyt-ep-LUG">
+                                        <rect key="frame" x="160" y="53" width="353" height="98.5"/>
+                                        <string key="text">09 22:54:39.255280+0200 Careem​Assignment[7283:148847] Could not load the "openCircleGreen" image referenced from a nib in the bundle with identifier "mr10-idev.Careem-Assignment"
+2018-07-09 22:54:39.256420+0200 Careem​Assignment[7283:148847] Could not load the "Background" image referenced from a nib in the bundle with identifier "mr10-idev.Careem-Assignment"
+2018-07-09 22:54:39.258092+0200 Careem​Assignment[7283:148847] Could not load the "icon_Delete"</string>
+                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="9"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="cHO-wZ-eve" firstAttribute="top" secondItem="0py-IP-pdc" secondAttribute="top" constant="12" id="4lX-vO-c7z"/>
+                                    <constraint firstItem="gHl-bg-J9X" firstAttribute="top" secondItem="cHO-wZ-eve" secondAttribute="bottom" constant="5" id="7Nk-70-xOU"/>
+                                    <constraint firstItem="cHO-wZ-eve" firstAttribute="leading" secondItem="2Iz-kS-uzE" secondAttribute="trailing" constant="10" id="CYL-Qb-NEt"/>
+                                    <constraint firstItem="Uyt-ep-LUG" firstAttribute="leading" secondItem="gHl-bg-J9X" secondAttribute="leading" id="J7y-6P-HEW"/>
+                                    <constraint firstItem="gHl-bg-J9X" firstAttribute="leading" secondItem="cHO-wZ-eve" secondAttribute="leading" id="QL1-3U-vJ7"/>
+                                    <constraint firstItem="Uyt-ep-LUG" firstAttribute="top" secondItem="gHl-bg-J9X" secondAttribute="bottom" constant="5" id="RjW-iz-DeJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="Uyt-ep-LUG" secondAttribute="bottom" constant="15.5" id="YxC-ov-V9g"/>
+                                    <constraint firstAttribute="trailing" secondItem="Uyt-ep-LUG" secondAttribute="trailing" constant="5" id="giT-39-knm"/>
+                                    <constraint firstItem="Uyt-ep-LUG" firstAttribute="leading" secondItem="2Iz-kS-uzE" secondAttribute="trailing" constant="10" id="jp3-3y-sG9"/>
+                                    <constraint firstItem="2Iz-kS-uzE" firstAttribute="top" secondItem="0py-IP-pdc" secondAttribute="top" id="nWy-6W-Srs"/>
+                                    <constraint firstItem="2Iz-kS-uzE" firstAttribute="leading" secondItem="0py-IP-pdc" secondAttribute="leading" id="w81-24-kBt"/>
+                                    <constraint firstItem="cHO-wZ-eve" firstAttribute="trailing" secondItem="Uyt-ep-LUG" secondAttribute="trailing" id="zMo-L2-Hjh"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="0py-IP-pdc" secondAttribute="bottom" id="01W-Vz-SPa"/>
+                            <constraint firstItem="0py-IP-pdc" firstAttribute="centerX" secondItem="v0e-Aw-Qqk" secondAttribute="centerX" id="EKI-e4-i6f"/>
+                            <constraint firstItem="0py-IP-pdc" firstAttribute="height" secondItem="v0e-Aw-Qqk" secondAttribute="height" id="ZwO-1R-1ok"/>
+                            <constraint firstItem="0py-IP-pdc" firstAttribute="width" secondItem="v0e-Aw-Qqk" secondAttribute="width" id="xWR-qg-mBZ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="v0e-Aw-Qqk" secondAttribute="bottom" constant="5" id="JJD-J1-L73"/>
+                    <constraint firstItem="v0e-Aw-Qqk" firstAttribute="leading" secondItem="D7y-UV-A0X" secondAttribute="leading" constant="10" id="MBq-Xz-RBm"/>
+                    <constraint firstItem="v0e-Aw-Qqk" firstAttribute="centerY" secondItem="D7y-UV-A0X" secondAttribute="centerY" id="geJ-xy-C9Q"/>
+                    <constraint firstAttribute="trailing" secondItem="v0e-Aw-Qqk" secondAttribute="trailing" constant="10" id="qgO-WS-KAB"/>
+                    <constraint firstItem="v0e-Aw-Qqk" firstAttribute="top" secondItem="D7y-UV-A0X" secondAttribute="top" constant="5" id="vBi-wp-4ps"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="cellImage" destination="2Iz-kS-uzE" id="rGi-PH-9wU"/>
+                <outlet property="containerView" destination="0py-IP-pdc" id="t9n-rN-kNN"/>
+                <outlet property="dateLbl" destination="gHl-bg-J9X" id="to3-R4-Imb"/>
+                <outlet property="movieOverviewLbl" destination="Uyt-ep-LUG" id="aRb-8m-Kur"/>
+                <outlet property="shadowView" destination="v0e-Aw-Qqk" id="4x7-zj-ag4"/>
+                <outlet property="titleLbl" destination="cHO-wZ-eve" id="ebh-3Q-fSP"/>
+            </connections>
+            <point key="canvasLocation" x="122" y="-494"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="iTunesArtwork" width="87" height="87"/>
+    </resources>
+</document>
