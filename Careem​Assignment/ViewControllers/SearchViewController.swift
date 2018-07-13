@@ -11,73 +11,58 @@ import ShadowView
 import NVActivityIndicatorView
 import DZNEmptyDataSet
 import SwiftGifOrigin
-enum SearchOptions {
-    case All
-    case Businesses
-    case Users
-}
+import UIScrollView_InfiniteScroll
+
 
 private let movieTableViewCellID = "MovieTableViewCell"
 private let defaultCellID = "Cell"
 private let sectionHeaderCellID = "SectionHeaderCell"
-//private let optionButtonColor: UIColor = UIColor().hexStringToUIColor(hex: "#2F87DE")
-private let suggestions: [String] = ["Suggested", "H&M", "Summer clothing", "Men’s clothing", "Zara"]
+
+let defaults = UserDefaults.standard
 
 
 class SearchViewController: BaseViewController {
-
+    
     // MARK:- Variables
     @IBOutlet weak var navigationBarShadowView: ShadowView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var loadingIndicator: NVActivityIndicatorView!
-    
     @IBOutlet weak var loadingLabel: UILabel!
-   
-    @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var stackViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var everythingButton: UIButton!
-    @IBOutlet weak var placesButton: UIButton!
-    @IBOutlet weak var peopleButton: UIButton!
-    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var customNavigationBarHeight: NSLayoutConstraint!
     
-
     var keyword: String = "" {
         didSet {
             updateKeyword()
         }
     }
     
-    var selectedOption: SearchOptions = .All
-    var hideStack: Bool = false
     var numOfAPICalls: Int = 0
-    
+    var page: Int = 1
+    var maxPages = 0
     lazy fileprivate var movies : [Results] = {
         return [Results]()
     }()
-
     
+    var suggestions: [String] = []
+    var suggestionsToView: [String] = ["Suggestions"]
     var showSuggestions: Bool = true
-
+    var dataSource: [Results] = []
+    
     // MARK:- View lifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         configureTableView()
+        configureLastTenSuggestions()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Hide the navigation bar on the this view controller
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        // Show the navigation bar on other view controllers
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -85,24 +70,12 @@ class SearchViewController: BaseViewController {
     
     // MARK:- Configuration
     func configureUI() {
-//        everythingButton.addCornerRadius(raduis: everythingButton.frame.height / 2, borderColor: optionButtonColor, borderWidth: 1)
-//        placesButton.addCornerRadius(raduis: placesButton.frame.height / 2, borderColor: optionButtonColor, borderWidth: 1)
-//        peopleButton.addCornerRadius(raduis: peopleButton.frame.height / 2, borderColor: optionButtonColor, borderWidth: 1)
-        
-//        navigationBarShadowView.addShadowLikeNavigationBar()
-        
+        self.navigationController?.title = ""
+        self.navigationController?.navigationBar.topItem?.title = "Careem Assignment"
+        self.navigationController?.navigationBar.backgroundColor = UIColor.gray
         loadingIndicator.type = .circleStrokeSpin
-        
- 
-        
-//        if UIDevice().userInterfaceIdiom == .phone {
-//            if UIScreen.main.nativeBounds.height == 2436 { //iPhone X
-//                customNavigationBarHeight.constant = iPhoneXNavigationBarHeight
-//            }
-//            else {
-//                customNavigationBarHeight.constant = normalNavigationBarHeight
-//            }
-//        }
+        loadingLabel.text = "Please type a name of a movie and press search."
+        loadingLabel.isHidden = false
     }
     
     func configureTableView() {
@@ -112,113 +85,70 @@ class SearchViewController: BaseViewController {
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.emptyDataSetSource = self
+        let adjustForTabbarInsets: UIEdgeInsets = UIEdgeInsetsMake(8, 0, 8, 0)
+        tableView.contentInset = adjustForTabbarInsets
+        tableView.scrollIndicatorInsets = adjustForTabbarInsets
     }
     
-    // MARK:- Actions
-    @IBAction func closeClicked(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func optionClicked(_ sender: Any) {
-        
-        selectOptionButton(optionButton: sender as! UIButton)
-        
-        switch sender as! UIButton {
-        case everythingButton:
-            clearOptionButton(optionButton: placesButton)
-            clearOptionButton(optionButton: peopleButton)
-            selectedOption = .All
-            
-        case placesButton:
-            clearOptionButton(optionButton: everythingButton)
-            clearOptionButton(optionButton: peopleButton)
-            selectedOption = .Businesses
-
-        case peopleButton:
-            clearOptionButton(optionButton: everythingButton)
-            clearOptionButton(optionButton: placesButton)
-            selectedOption = .Users
-
-        default:
-            print("Default")
-        }
-        
-        if showSuggestions == false {
-            fetchData()
+    func configureLastTenSuggestions(){
+        suggestions = defaults.stringArray(forKey: "SavedStringArray") ?? [String]()
+        suggestionsToView.removeAll()
+        suggestionsToView.append("Suggested")
+        for item in suggestions.reversed() {
+            if suggestionsToView.count < 11 {
+                suggestionsToView.append(item)
+            }
         }
     }
     
-    // MARK:- API call
-    func fetchData() {
-        movies = []
-        searchBusinesses()
-//        users = []
-//
-//        switch selectedOption {
-//        case .Businesses:
-//            searchBusinesses()
-//
-//        case .Users:
-//            searchUsers()
-//
-//        default:
-//            searchBusinesses()
-//            searchUsers()
-//        }
-    }
+    // MARK:- Helpers
     
-    func searchBusinesses() {
- 
-        let parameters: APIParams = [
-            "query" : keyword as AnyObject,
-            "page" : "1" as AnyObject,
-        ]
-
-        startLoadingIndicatorAnimating()
+    func adjustInfiniteScrollStatus(newArray: [Results]) {
+        if  self.page >= self.maxPages {
+            tableView.removeInfiniteScroll()
+        }
+    }
+    func adjustInfiniteScroll() {
         weak var weakSelf = self
-        SearchManager.shared.searchBusiness(basicDictionary: keyword, page: "1", onSuccess: { (movies) in
-
-            
-            weakSelf?.movies =  movies.results!
-            
-//            weakSelf?..append(contentsOf: businesses.businessesArr!)
-            weakSelf?.tableView.reloadData()
-            weakSelf?.stopLoadingIndicatorAnimating()
-
-        }) { (apiError) in
-
-            weakSelf?.stopLoadingIndicatorAnimating()
-//            weakSelf?.businesses = []
-//            weakSelf?.tableView.reloadData()
+        tableView.addInfiniteScroll { (tableView) -> Void in
+            weakSelf?.page += 1
+            weakSelf?.searchBusinesses(complete: { (feedArr) in
+                if let arr: [Results] = feedArr, arr.count > 0 {
+                    // create new index paths
+                    let storyCount: Int = (weakSelf?.dataSource.count)!
+                    let (start, end) = (storyCount, arr.count + storyCount)
+                    let indexPaths = (start..<end).map { return IndexPath(row: $0, section: 0) }
+                    // update data source
+                    weakSelf?.dataSource.append(contentsOf: arr)
+                    // update table view
+                    weakSelf?.tableView.beginUpdates()
+                    weakSelf?.tableView.insertRows(at: indexPaths, with: .automatic)
+                    weakSelf?.tableView.endUpdates()
+                    weakSelf?.adjustInfiniteScrollStatus(newArray: feedArr ?? [])
+                }
+                tableView.finishInfiniteScroll()
+            })
         }
-    }
-    
-
-    // MARK:- Helper
-    func selectOptionButton(optionButton: UIButton) {
-//        optionButton.backgroundColor = optionButtonColor
-//        optionButton.setTitleColor(UIColor.white, for: .normal)
-    }
-    
-    func clearOptionButton(optionButton: UIButton) {
-//        optionButton.backgroundColor = UIColor.clear
-//        optionButton.setTitleColor(optionButtonColor, for: .normal)
     }
     
     func updateKeyword() {
         if keyword.count > 0 {
             showSuggestions = false
+            adjustInfiniteScroll()
+
             fetchData()
         }
         else {
             showSuggestions = true
+            tableView.finishInfiniteScroll()
+            tableView.removeInfiniteScroll()
             tableView.reloadData()
         }
     }
     
     func startLoadingIndicatorAnimating() {
         if numOfAPICalls == 0 {
-            tableView.isHidden = true
+            loadingLabel.text = "One moment, getting rersults for you"
             loadingLabel.isHidden = false
             loadingIndicator.startAnimating()
         }
@@ -227,19 +157,56 @@ class SearchViewController: BaseViewController {
     
     func stopLoadingIndicatorAnimating() {
         numOfAPICalls -= 1
-
         if numOfAPICalls == 0 {
-            tableView.isHidden = false
-            loadingLabel.isHidden = true
+            loadingLabel.text = "Your search results for \(keyword)"
             loadingIndicator.stopAnimating()
         }
     }
     
+    
+    // MARK:- API call
+    func fetchData() {
+        weak var weakSelf = self
+        adjustInfiniteScroll()
+        self.searchBusinesses(complete: { (feedArr) in
+            weakSelf?.dataSource = feedArr ?? []
+            weakSelf?.tableView.reloadData()
+            weakSelf?.adjustInfiniteScrollStatus(newArray: feedArr ?? [])
+        })
+    }
+    
+    func searchBusinesses(complete: @escaping ([Results]?)->Void) {
+        startLoadingIndicatorAnimating()
+        weak var weakSelf = self
+        SearchManager.shared.searchBusiness(basicDictionary: keyword, page: "\(page)", onSuccess: { (movies) in
+            
+            if movies.total_results != 0 && !self.suggestionsToView.contains(self.keyword){
+                self.suggestions.append(self.keyword)
+                defaults.set(self.suggestions, forKey: "SavedStringArray")
+                self.configureLastTenSuggestions()
+            }
+            weakSelf?.maxPages = movies.total_pages!
+            if  self.page <= movies.total_pages! {
+                weakSelf?.movies =  movies.results!
+                weakSelf?.stopLoadingIndicatorAnimating()
+                complete(movies.results!)
+            }
+        }) { (apiError) in
+            
+            weakSelf?.stopLoadingIndicatorAnimating()
+            
+        }
+    }
 }
 
 // MARK:- Extensions
 extension SearchViewController: UISearchBarDelegate {
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.text = ""
+        page = 1
+        loadingLabel.text = "Please type a name of a movie and press search."
+        searchBar.resignFirstResponder()
+        keyword = searchBar.text!
         return true
     }
     
@@ -265,6 +232,8 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
+        page = 1
+        loadingLabel.text = "Please type a name of a movie and press search."
         searchBar.resignFirstResponder()
         keyword = searchBar.text!
     }
@@ -284,71 +253,45 @@ extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if showSuggestions {
-            return suggestions.count
+            return  suggestionsToView.count
         }
-        return movies.count
+        return dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-//        if showSuggestions {
-//            var cell = tableView.dequeueReusableCell(withIdentifier: defaultCellID)
-//            if indexPath.row == 0 {
-//                cell = tableView.dequeueReusableCell(withIdentifier: sectionHeaderCellID)
-//            }
-//            cell?.textLabel?.text = suggestions[indexPath.row]
-//            return cell!
-//        }
-        
-        
-        
-//        if users.count > 0 {
-//            if indexPath.row < users.count {
-//                return getFollowerCell(for: indexPath)
-//            }
-//            else {
-//                return getBusinessTableViewCell(for: indexPath, indexInArray: indexPath.row - users.count)
-//            }
-//        }
-//        else {
-//            return getBusinessTableViewCell(for: indexPath, indexInArray: indexPath.row)
-//        }
+        if showSuggestions {
+            var cell = tableView.dequeueReusableCell(withIdentifier: defaultCellID)
+            if indexPath.row == 0 {
+                cell = tableView.dequeueReusableCell(withIdentifier: sectionHeaderCellID)
+            }
+            cell?.textLabel?.text = suggestionsToView[indexPath.row]
+            return cell!
+        }
         if movies.count > 0{
             return getMovieTableViewCell(for: indexPath, indexInArray: indexPath.row)
         }
         return UITableViewCell()
     }
     
-     //MARK: Helper Methods
+    //MARK: Helper Methods
     func getMovieTableViewCell(for indexPath: IndexPath, indexInArray: Int) -> MovieTableViewCell {
         let cell: MovieTableViewCell = tableView.dequeueReusableCell(withIdentifier: movieTableViewCellID, for: indexPath) as! MovieTableViewCell
-
-        cell.movie = movies[indexInArray]
-
+        cell.movie = dataSource[indexInArray]
         return cell
     }
-
-
-    
 }
 
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if let cell = tableView.cellForRow(at: indexPath) {
-//            if cell is BusinessTableViewCell {
-//                navigateToBusinessProfile(businessModel: (cell as! BusinessTableViewCell).business)
-//            }
-//            else if cell is FollowersCell {
-//                if let user: User = (cell as! FollowersCell).user {
-//                    navigateToUserProfile(userId: user.userID)
-//                }
-//            }
-//            else {
-//                searchBar.text = suggestions[indexPath.row]
-//                keyword = suggestions[indexPath.row]
-//            }
-//        }
-        
+        if let _ = tableView.cellForRow(at: indexPath) as? MovieTableViewCell {
+            
+        } else {
+            if let _ = tableView.cellForRow(at: indexPath) {
+                searchBar.text = suggestionsToView[indexPath.row]
+                keyword = suggestionsToView[indexPath.row]
+            }
+        }
     }
 }
 

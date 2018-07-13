@@ -1,0 +1,136 @@
+PODS:
+  - ActionSheetPicker-3.0 (2.3.0)
+  - ActiveLabel (0.9.0)
+  - Alamofire (4.7.2)
+  - CHIPageControl (0.1.6):
+    - CHIPageControl/Aji (= 0.1.6)
+    - CHIPageControl/Aleppo (= 0.1.6)
+    - CHIPageControl/Chimayo (= 0.1.6)
+    - CHIPageControl/Fresno (= 0.1.6)
+    - CHIPageControl/Jalapeno (= 0.1.6)
+    - CHIPageControl/Jaloro (= 0.1.6)
+    - CHIPageControl/Paprika (= 0.1.6)
+    - CHIPageControl/Puya (= 0.1.6)
+  - CHIPageControl/Aji (0.1.6)
+  - CHIPageControl/Aleppo (0.1.6)
+  - CHIPageControl/Chimayo (0.1.6)
+  - CHIPageControl/Fresno (0.1.6)
+  - CHIPageControl/Jalapeno (0.1.6)
+  - CHIPageControl/Jaloro (0.1.6)
+  - CHIPageControl/Paprika (0.1.6)
+  - CHIPageControl/Puya (0.1.6)
+  - DZNEmptyDataSet (1.8.1)
+  - EMSpinnerButton (1.0.0)
+  - FloatRatingView (2.0)
+  - Hakawai (5.1.5):
+    - Hakawai/Core (= 5.1.5)
+    - Hakawai/Mentions (= 5.1.5)
+  - Hakawai/Core (5.1.5)
+  - Hakawai/Mentions (5.1.5):
+    - Hakawai/Core
+  - IHKeyboardAvoiding (4.2)
+  - IQKeyboardManagerSwift (6.0.4)
+  - Kingfisher (4.8.0)
+  - KMPlaceholderTextView (1.3.0)
+  - ListPlaceholder (1.2)
+  - MOLH (0.2)
+  - NVActivityIndicatorView (4.2.1):
+    - NVActivityIndicatorView/Presenter (= 4.2.1)
+  - NVActivityIndicatorView/Presenter (4.2.1)
+  - ObjectMapper (3.3.0)
+  - Pastel (0.4.0)
+  - ShadowView (1.2)
+  - SwiftGifOrigin (1.6.1)
+  - SwiftLocation (3.1.0):
+    - SwiftyJSON (~> 4.0.0-alpha.1)
+  - SwiftyJSON (4.0.0)
+  - SZMentionsSwift (1.1.3)
+  - TagListView (1.3.1)
+  - Toast-Swift (3.0.1)
+  - UIScrollView-InfiniteScroll (1.0.2)
+
+DEPENDENCIES:
+  - ActionSheetPicker-3.0
+  - ActiveLabel
+  - Alamofire
+  - CHIPageControl (~> 0.1.3)
+  - DZNEmptyDataSet
+  - EMSpinnerButton
+  - FloatRatingView (~> 2.0.0)
+  - Hakawai
+  - IHKeyboardAvoiding
+  - IQKeyboardManagerSwift
+  - Kingfisher
+  - KMPlaceholderTextView (~> 1.3.0)
+  - ListPlaceholder
+  - MOLH
+  - NVActivityIndicatorView
+  - ObjectMapper
+  - Pastel
+  - ShadowView
+  - SwiftGifOrigin (~> 1.6.1)
+  - SwiftLocation (~> 3.1.0)
+  - SwiftyJSON
+  - SZMentionsSwift
+  - TagListView (~> 1.0)
+  - Toast-Swift (~> 3.0.1)
+  - UIScrollView-InfiniteScroll (~> 1.0.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ActionSheetPicker-3.0
+    - ActiveLabel
+    - Alamofire
+    - CHIPageControl
+    - DZNEmptyDataSet
+    - EMSpinnerButton
+    - FloatRatingView
+    - Hakawai
+    - IHKeyboardAvoiding
+    - IQKeyboardManagerSwift
+    - Kingfisher
+    - KMPlaceholderTextView
+    - ListPlaceholder
+    - MOLH
+    - NVActivityIndicatorView
+    - ObjectMapper
+    - Pastel
+    - ShadowView
+    - SwiftGifOrigin
+    - SwiftLocation
+    - SwiftyJSON
+    - SZMentionsSwift
+    - TagListView
+    - Toast-Swift
+    - UIScrollView-InfiniteScroll
+
+SPEC CHECKSUMS:
+  ActionSheetPicker-3.0: eef157d75e151f255c5333d26656c7fbfe905a51
+  ActiveLabel: c4fdd14a288483e98b5a3dff0ab214699aeee74a
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  CHIPageControl: 21b85bb8c7d4d1d15fc4f353e1eb095eb75de5f1
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  EMSpinnerButton: edcf72c6a9809a7ede3f6e0696a7c7b38ca8180d
+  FloatRatingView: 857ab8f10040d06a42fc979f486c8f9fecd2f2e5
+  Hakawai: 3ebb11169c4abe978bc9217df87082cc2f19bbce
+  IHKeyboardAvoiding: 9fbf816b7c3c84911964802ff110d12caf40ebef
+  IQKeyboardManagerSwift: 36dbe324b4f9793f5f41ba5227f3e7c76dfefd50
+  Kingfisher: 976d828df2b24834c6a3f2fc4d82cdbd26552be1
+  KMPlaceholderTextView: 2bbcd19a273648a80a61e1e48f9743a24d8930e3
+  ListPlaceholder: 48227c2f1ff0cd2f75c8e2bb26b5a45a29cf1d4c
+  MOLH: 13243a3cc16cb471ed22efb9e5a192c52275a4a6
+  NVActivityIndicatorView: 8068ba3ad39cb44cbaab25d89ff2546b3f092681
+  ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
+  Pastel: 7fa5e26123b3dbe11f7ed255654bf37100b199a5
+  ShadowView: e686f2e27fc281c0118419b1fb314b6e534a4682
+  SwiftGifOrigin: d6679d3ebe9df2e049a84bc52582635107b581f6
+  SwiftLocation: 8f5ef4f510a45e43239de57a3145b3669301e898
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+  SZMentionsSwift: 7515d28fcd3152c4a57a535a6fa915c51839ef21
+  TagListView: 6dafd34a61021c6db72c0c8e3a044054c9854311
+  Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
+  UIScrollView-InfiniteScroll: c132d6d5851daff229ab4a1060ccf70a05a051c9
+
+PODFILE CHECKSUM: 179656165b358fd55f63a7bf3375b0939b3df5eb
+
+COCOAPODS: 1.5.3
