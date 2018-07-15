@@ -10,7 +10,6 @@ import UIKit
 import ShadowView
 import NVActivityIndicatorView
 import DZNEmptyDataSet
-import SwiftGifOrigin
 import UIScrollView_InfiniteScroll
 
 
@@ -24,12 +23,12 @@ let defaults = UserDefaults.standard
 class SearchViewController: BaseViewController {
     
     // MARK:- Variables
-    @IBOutlet weak var navigationBarShadowView: ShadowView!
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var loadingIndicator: NVActivityIndicatorView!
-    @IBOutlet weak var loadingLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var customNavigationBarHeight: NSLayoutConstraint!
+    @IBOutlet private weak var navigationBarShadowView: ShadowView!
+    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var loadingIndicator: NVActivityIndicatorView!
+    @IBOutlet private weak var loadingLabel: UILabel!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var customNavigationBarHeight: NSLayoutConstraint!
     
     var keyword: String = "" {
         didSet {
@@ -69,7 +68,7 @@ class SearchViewController: BaseViewController {
     }
     
     // MARK:- Configuration
-    func configureUI() {
+    private func configureUI() {
         self.navigationController?.title = ""
         self.navigationController?.navigationBar.topItem?.title = "Careem Assignment"
         self.navigationController?.navigationBar.backgroundColor = UIColor.gray
@@ -78,7 +77,7 @@ class SearchViewController: BaseViewController {
         loadingLabel.isHidden = false
     }
     
-    func configureTableView() {
+    private func configureTableView() {
         tableView.register(UINib(nibName: movieTableViewCellID, bundle: nil), forCellReuseIdentifier: movieTableViewCellID)
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.delegate = self
@@ -90,7 +89,7 @@ class SearchViewController: BaseViewController {
         tableView.scrollIndicatorInsets = adjustForTabbarInsets
     }
     
-    func configureLastTenSuggestions(){
+    private func configureLastTenSuggestions(){
         suggestions = defaults.stringArray(forKey: "SavedStringArray") ?? [String]()
         suggestionsToView.removeAll()
         suggestionsToView.append("Suggested")
@@ -131,7 +130,7 @@ class SearchViewController: BaseViewController {
         }
     }
     
-    func updateKeyword() {
+   private func updateKeyword() {
         if keyword.count > 0 {
             showSuggestions = false
             adjustInfiniteScroll()
@@ -165,7 +164,7 @@ class SearchViewController: BaseViewController {
     
     
     // MARK:- API call
-    func fetchData() {
+    private func fetchData() {
         weak var weakSelf = self
         adjustInfiniteScroll()
         self.searchBusinesses(complete: { (feedArr) in
@@ -175,7 +174,7 @@ class SearchViewController: BaseViewController {
         })
     }
     
-    func searchBusinesses(complete: @escaping ([Results]?)->Void) {
+    private func searchBusinesses(complete: @escaping ([Results]?)->Void) {
         startLoadingIndicatorAnimating()
         weak var weakSelf = self
         SearchManager.shared.searchBusiness(basicDictionary: keyword, page: "\(page)", onSuccess: { (movies) in

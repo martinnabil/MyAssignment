@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftLocation
 import CoreLocation
 
 @objc public enum EnviromentType : Int{
