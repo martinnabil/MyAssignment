@@ -14,35 +14,27 @@
 		C15ECC0F20F3F08200BCAEB9 /* Careem_AssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15ECC0E20F3F08200BCAEB9 /* Careem_AssignmentTests.swift */; };
 		C15ECC1A20F3F08200BCAEB9 /* Careem_AssignmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15ECC1920F3F08200BCAEB9 /* Careem_AssignmentUITests.swift */; };
 		C15ECC2E20F3FAD500BCAEB9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15ECC2D20F3FAD500BCAEB9 /* BaseViewController.swift */; };
-		C15ECC3020F3FB1200BCAEB9 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC2F20F3FB1200BCAEB9 /* Search.storyboard */; };
 		C15ECC3220F3FB1F00BCAEB9 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15ECC3120F3FB1F00BCAEB9 /* SearchViewController.swift */; };
 		C15ECC3620F3FFD300BCAEB9 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15ECC3420F3FFD300BCAEB9 /* MovieTableViewCell.swift */; };
 		C15ECC3720F3FFD300BCAEB9 /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC3520F3FFD300BCAEB9 /* MovieTableViewCell.xib */; };
 		C15ECC3920F4001300BCAEB9 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15ECC3820F4001300BCAEB9 /* MovieModel.swift */; };
 		C15ECC5A20F400BB00BCAEB9 /* RobotoSlab-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC3C20F400BB00BCAEB9 /* RobotoSlab-Thin.ttf */; };
 		C15ECC5B20F400BB00BCAEB9 /* RobotoSlab-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC3D20F400BB00BCAEB9 /* RobotoSlab-Bold.ttf */; };
-		C15ECC5C20F400BB00BCAEB9 /* RobotoSlab-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC3E20F400BB00BCAEB9 /* RobotoSlab-Light.ttf */; };
 		C15ECC5D20F400BB00BCAEB9 /* RobotoSlab-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC3F20F400BB00BCAEB9 /* RobotoSlab-Regular.ttf */; };
 		C15ECC5E20F400BB00BCAEB9 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC4120F400BB00BCAEB9 /* OpenSans-SemiBold.ttf */; };
 		C15ECC5F20F400BB00BCAEB9 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC4220F400BB00BCAEB9 /* OpenSans-Light.ttf */; };
 		C15ECC6020F400BB00BCAEB9 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC4320F400BB00BCAEB9 /* OpenSans-Italic.ttf */; };
 		C15ECC6120F400BB00BCAEB9 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC4420F400BB00BCAEB9 /* OpenSans-ExtraBold.ttf */; };
 		C15ECC6220F400BB00BCAEB9 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC4520F400BB00BCAEB9 /* OpenSans-LightItalic.ttf */; };
-		C15ECC6320F400BB00BCAEB9 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC4620F400BB00BCAEB9 /* OpenSans-Bold.ttf */; };
 		C15ECC6420F400BB00BCAEB9 /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC4720F400BB00BCAEB9 /* OpenSans-SemiBoldItalic.ttf */; };
 		C15ECC6520F400BB00BCAEB9 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC4820F400BB00BCAEB9 /* OpenSans-ExtraBoldItalic.ttf */; };
-		C15ECC6620F400BB00BCAEB9 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC4920F400BB00BCAEB9 /* LICENSE.txt */; };
-		C15ECC6720F400BB00BCAEB9 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC4A20F400BB00BCAEB9 /* OpenSans-Regular.ttf */; };
 		C15ECC6820F400BB00BCAEB9 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC4B20F400BB00BCAEB9 /* OpenSans-BoldItalic.ttf */; };
 		C15ECC6920F400BB00BCAEB9 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC4D20F400BB00BCAEB9 /* Roboto-Medium.ttf */; };
-		C15ECC6A20F400BB00BCAEB9 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC4E20F400BB00BCAEB9 /* Roboto-Light.ttf */; };
 		C15ECC6B20F400BB00BCAEB9 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC4F20F400BB00BCAEB9 /* Roboto-Regular.ttf */; };
 		C15ECC6C20F400BB00BCAEB9 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC5020F400BB00BCAEB9 /* Roboto-MediumItalic.ttf */; };
 		C15ECC6D20F400BB00BCAEB9 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC5120F400BB00BCAEB9 /* Roboto-ThinItalic.ttf */; };
 		C15ECC6E20F400BB00BCAEB9 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC5220F400BB00BCAEB9 /* Roboto-BoldItalic.ttf */; };
-		C15ECC6F20F400BB00BCAEB9 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC5320F400BB00BCAEB9 /* Roboto-LightItalic.ttf */; };
 		C15ECC7020F400BB00BCAEB9 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC5420F400BB00BCAEB9 /* Roboto-Italic.ttf */; };
-		C15ECC7120F400BB00BCAEB9 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC5520F400BB00BCAEB9 /* LICENSE.txt */; };
 		C15ECC7220F400BB00BCAEB9 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC5620F400BB00BCAEB9 /* Roboto-BlackItalic.ttf */; };
 		C15ECC7320F400BB00BCAEB9 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC5720F400BB00BCAEB9 /* Roboto-Bold.ttf */; };
 		C15ECC7420F400BB00BCAEB9 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C15ECC5820F400BB00BCAEB9 /* Roboto-Thin.ttf */; };
@@ -492,14 +484,6 @@
 				C15ECC5B20F400BB00BCAEB9 /* RobotoSlab-Bold.ttf in Resources */,
 				C15ECC5D20F400BB00BCAEB9 /* RobotoSlab-Regular.ttf in Resources */,
 				C15ECC3720F3FFD300BCAEB9 /* MovieTableViewCell.xib in Resources */,
-				C15ECC7120F400BB00BCAEB9 /* LICENSE.txt in Resources */,
-				C15ECC5C20F400BB00BCAEB9 /* RobotoSlab-Light.ttf in Resources */,
-				C15ECC6720F400BB00BCAEB9 /* OpenSans-Regular.ttf in Resources */,
-				C15ECC6F20F400BB00BCAEB9 /* Roboto-LightItalic.ttf in Resources */,
-				C15ECC6320F400BB00BCAEB9 /* OpenSans-Bold.ttf in Resources */,
-				C15ECC3020F3FB1200BCAEB9 /* Search.storyboard in Resources */,
-				C15ECC6620F400BB00BCAEB9 /* LICENSE.txt in Resources */,
-				C15ECC6A20F400BB00BCAEB9 /* Roboto-Light.ttf in Resources */,
 				C15ECC6820F400BB00BCAEB9 /* OpenSans-BoldItalic.ttf in Resources */,
 				C15ECC5A20F400BB00BCAEB9 /* RobotoSlab-Thin.ttf in Resources */,
 				C15ECC6020F400BB00BCAEB9 /* OpenSans-Italic.ttf in Resources */,
