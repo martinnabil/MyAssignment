@@ -41,7 +41,7 @@ class MovieTableViewCell: UITableViewCell {
         
         cellImage.layer.cornerRadius = 4
         cellImage.layer.masksToBounds = true
-
+        
         adjustFonts()
     }
     
@@ -49,31 +49,24 @@ class MovieTableViewCell: UITableViewCell {
         titleLbl.font = FontsManager.shared.OpenSansSemiBoldWithSize(13)
         dateLbl.font = FontsManager.shared.OpenSansRegularWithSize(9)
         movieOverviewLbl.font = FontsManager.shared.OpenSansRegularWithSize(10)
-
+        
     }
     
     // MARK:- Adjust data
     func adjustData() {
-        
-//        cellImage.loadImageFromUrl(imageUrl: )
-   
         titleLbl.text = movie.title
         movieOverviewLbl.text = movie.overview
-        
         if let date: String = movie.release_date {
             dateLbl.text = date
         }
-        
         if let image = movie.poster_path {
             let url = URL(string:EnviromentManager.shared.imagesUrl + image)
             cellImage.kf.setImage(with: url)
         } else {
-        cellImage.image = #imageLiteral(resourceName: "iTunesArtwork")
+            cellImage.image = #imageLiteral(resourceName: "iTunesArtwork")
         }
-
+        
     }
     
-    // MARK:- Helper
-
-
+    
 }

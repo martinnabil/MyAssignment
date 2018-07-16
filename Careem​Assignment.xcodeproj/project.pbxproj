@@ -100,7 +100,6 @@
 		C15ECC4620F400BB00BCAEB9 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		C15ECC4720F400BB00BCAEB9 /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		C15ECC4820F400BB00BCAEB9 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
-		C15ECC4920F400BB00BCAEB9 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		C15ECC4A20F400BB00BCAEB9 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		C15ECC4B20F400BB00BCAEB9 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		C15ECC4D20F400BB00BCAEB9 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
@@ -305,7 +304,6 @@
 				C15ECC4620F400BB00BCAEB9 /* OpenSans-Bold.ttf */,
 				C15ECC4720F400BB00BCAEB9 /* OpenSans-SemiBoldItalic.ttf */,
 				C15ECC4820F400BB00BCAEB9 /* OpenSans-ExtraBoldItalic.ttf */,
-				C15ECC4920F400BB00BCAEB9 /* LICENSE.txt */,
 				C15ECC4A20F400BB00BCAEB9 /* OpenSans-Regular.ttf */,
 				C15ECC4B20F400BB00BCAEB9 /* OpenSans-BoldItalic.ttf */,
 			);
